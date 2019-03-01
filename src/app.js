@@ -38,8 +38,8 @@ app.post('/payment', (req,res) => {
   accounts.credit.balance -= req.body.amount;
   accounts.credit.available += parseInt(req.body.amount,10);
   const accountsJSON = JSON.stringify(accounts,null,4);
-  fs.writeFileSync(path.join(__dirname,'json','accounts.json'),accountsJSON, 'UTF8');
-  res.render('payment',{ message: 'Payment Completed', account: accounts.credit });
+  fs.writeFileSync(path.join(__dirname,'json/accounts.json'),accountsJSON, 'UTF8');
+  res.render('payment',{ message: 'Payment Successful', account: accounts.credit });
 });
 app.get('/profile', (req,res) => res.render('profile', { user: users[0] }));
 
